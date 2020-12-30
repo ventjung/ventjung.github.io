@@ -5,4 +5,4 @@ header('Content-Type: application/javascript');
 
 ?>
 
-importScripts('sw.js');
+importScripts('realsw.js');
