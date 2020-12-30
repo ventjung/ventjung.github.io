@@ -10,17 +10,16 @@
 <body>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then((registration) => {
-                    console.log('Success', registration);
-                })
-                .catch((error) => {
-                    console.log('Failed', error);
-                });
-        } else {
-            console.log('Service workers are not supported.');
-        }
+        // scope defaults to the path the script sits in
+        // "/" in this example
+        navigator.serviceWorker.register("/sw.js").then(registration => {
+          console.log("success!");
+          if (registration.installing) {
+            registration.installing.postMessage("Howdy from your installing page.");
+          }
+        }, err => {
+          console.error("Installing the worker failed!", err);
+        });
 
     </script>
 </body>
